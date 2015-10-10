@@ -1,0 +1,5 @@
+<h1>All Tasks</h1>
+
+<% @tasks.each do |task| %> <!-- @tasks set in task_manager_app -->
+  <h3><%= task.id %>: <a href="/tasks/<%= task.id %>"><%= task.title %></a></h3>
+<% end %>

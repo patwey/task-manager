@@ -1,0 +1,8 @@
+<form action="/tasks" method="post">
+  <p>Enter a new task:</p>
+  <!-- becomes task['title'] in params -->
+  <input type='text' name='task[title]'/><br/>
+  <!-- becomes task['description'] in params -->
+  <textarea name='task[description]'></textarea><br/>
+  <input type='submit'/>
+</form>
