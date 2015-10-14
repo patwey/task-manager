@@ -21,9 +21,17 @@ class CreateTaskTest < FeatureTest
   end
 
   # as a user, when I visit the new task page, and I enter a title and description,
-  # and I click the submit button, then a new task is created
+  # and I click the submit button, then a new task is created and I am routed to the index page
   def test_user_can_submit_a_new_task_form_that_create_new_task
-    skip
+    visit '/tasks/new'
+    assert_equal '/tasks/new', current_path
+    within('#newTaskForm') do
+      fill_in('task[title]', with: 'Feature Testing')
+      fill_in('task[description]', with: 'I M using Capybara')
+      click_button('create task') # id set as a value on the button
+    end
+
+    assert_equal '/tasks', current_path
   end
 
   # as a user, when I visit the new task page, and I do not enter a title,
