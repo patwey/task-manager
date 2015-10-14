@@ -2,8 +2,11 @@ require 'yaml/store' # this is the only class that uses YAML
 
 class TaskManager
   def self.database
-    # returns an instance of YAML::Store
-    @database ||= YAML::Store.new("db/task_manager")
+    # ENV['RACK_ENV'] is set in test_helper.rb
+    if ENV['RACK_ENV'] == 'test' # if we want to use our test db
+      @database ||= YAML::Store.new('db/task_manager_test')
+    else
+      @database ||= YAML::Store.new('db/task_manager')
   end
 
   def self.create(task)
@@ -45,6 +48,13 @@ class TaskManager
   def self.delete(id)
     database.transaction do
       database['tasks'].delete_if { |task| task["id"] == id }
+    end
+  end
+
+  def self.delete_all
+    database.transaction do
+      database['tasks'] = []
+      database['total'] = 0
     end
   end
 end
