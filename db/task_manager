@@ -1,8 +1,5 @@
 ---
 tasks:
-- id: 1
-  title: Complete Task Manager
-  description: The sooner I complete Task Manager, the sooner I can eat dinner!
 - id: 2
   title: Get Bike Fenders
   description: For the snow, man!

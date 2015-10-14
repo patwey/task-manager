@@ -1,5 +1,14 @@
-<h1>All Tasks</h1>
+  <div class="container">
+  <h1>Task Index</h1>
 
-<% @tasks.each do |task| %> <!-- @tasks set in task_manager_app -->
-  <h3><%= task.id %>: <a href="/tasks/<%= task.id %>"><%= task.title %></a></h3>
-<% end %>
+  <div class="list-group">
+    <% @tasks.each do |task| %> <!-- @tasks set in task_manager_app -->
+      <a href="/tasks/<%= task.id %>" class="list-group-item"><%= task.title %></a>
+      <a href="/tasks/<%= task.id %>/edit">Edit</a>
+      <form action="/tasks/<%= task.id %>" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" value="delete" />
+      </form>
+    <% end %>
+  </div>
+</div>

@@ -1,8 +1,4 @@
-require 'models/task_manager'
-
 class TaskManagerApp < Sinatra::Base
-  set :root, File.expand_path("..", __dir__)
-
   get '/' do
     erb :dashboard # dashboard view
   end
@@ -24,5 +20,24 @@ class TaskManagerApp < Sinatra::Base
   get '/tasks/:id' do |id| # grabs whatever is after tasks/ and stores it in id
     @task = TaskManager.find(id.to_i)
     erb :show
+  end
+
+  get '/tasks/:id/edit' do |id| # can also do params[:id]
+    @task = TaskManager.find(id.to_i)
+    erb :edit
+  end
+
+  put '/tasks/:id' do |id|
+    TaskManager.update(id.to_i, params[:task])
+    redirect '/tasks'
+  end
+
+  delete '/tasks/:id' do |id|
+    TaskManager.delete(id.to_i)
+    redirect '/tasks'
+  end
+
+  not_found do # in case there's an error
+    erb :error
   end
 end

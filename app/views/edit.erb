@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Edit Task</h1>
+    <div class="well">
+      <form action="/tasks/<%= @task.id  %>" method="POST">
+        <input type="hidden" name="_method" value="PUT" />
+        <div class="form-group">
+          <label for="taskTitle">Title</label><br>
+          <input type='text' name='task[title]' id="taskTitle" value="<%= @task.title %>" /><br/>
+          <label for="taskDescription">Description</label>
+          <textarea class="form-control" rows="3" name='task[description]' id="taskDescription"><%= @task.description %></textarea><br/>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

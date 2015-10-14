@@ -1,8 +1,15 @@
-<form action="/tasks" method="post">
-  <p>Enter a new task:</p>
-  <!-- becomes task['title'] in params -->
-  <input type='text' name='task[title]'/><br/>
-  <!-- becomes task['description'] in params -->
-  <textarea name='task[description]'></textarea><br/>
-  <input type='submit'/>
-</form>
+<div class="container">
+  <h1>Create Task <small>Fill out the form below</small></h1>
+    <div class="well">
+      <form action="/tasks" method="post">
+        <div class="form-group">
+          <label for="taskTitle">Title</label><br>
+          <input type='text' name='task[title]' id="taskTitle"/><br/>
+          <label for="taskDescription">Description</label>
+          <textarea class="form-control" rows="3" name='task[description]' id="taskDescription"></textarea><br/>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

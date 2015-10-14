@@ -1,5 +1,4 @@
-require 'yaml/store' # store data using YAML format
-require_relative 'task'
+require 'yaml/store' # this is the only class that uses YAML
 
 class TaskManager
   def self.database
@@ -33,5 +32,19 @@ class TaskManager
 
   def self.find(id)
     Task.new(raw_task(id))
+  end
+
+  def self.update(id, task)
+    database.transaction do
+      target = database['tasks'].find { |task| task["id"] == id }
+      target["title"] = task[:title]
+      target["description"] = task[:description]
+    end
+  end
+
+  def self.delete(id)
+    database.transaction do
+      database['tasks'].delete_if { |task| task["id"] == id }
+    end
   end
 end
