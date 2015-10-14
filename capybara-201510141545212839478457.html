@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <span class="navbar-brand">Task Manager</span>
+          </div>
+          <div>
+            <ul class="nav navbar-nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/tasks">Task Index</a></li>
+              <li><a href="/tasks/new">New Task</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+  <h1>Create Task <small>Fill out the form below</small></h1>
+    <div class="well">
+      <form action="/tasks" method="post" id="newTaskForm">
+        <div class="form-group">
+          <label for="taskTitle">Title</label><br>
+          <input type='text' name='task[title]' id="taskTitle"/><br/>
+          <label for="taskDescription">Description</label>
+          <textarea class="form-control" rows="3" name='task[description]' id="taskDescription"></textarea><br/>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src='js/bootstrap.js'></script>
+  </body>
+</head>
