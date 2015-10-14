@@ -7,6 +7,7 @@ class TaskManager
       @database ||= YAML::Store.new('db/task_manager_test')
     else
       @database ||= YAML::Store.new('db/task_manager')
+    end
   end
 
   def self.create(task)

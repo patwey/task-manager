@@ -1,16 +1,13 @@
 require 'bundler'
-Bundler.require # requires all gems in Gemfile
+Bundler.require
 
-# get the path of the root of the app (this is something that should not change)
+# get the path of the root of the app
 APP_ROOT = File.expand_path("..", __dir__)
 
-# require the controller(s):
-#   Dir.glob makes all of these things into an array
-#   then require all of 'em
+# require the controller(s)
 Dir.glob(File.join(APP_ROOT, 'app', 'controllers', '*.rb')).each { |file| require file }
 
 # require the model(s)
-#   samsies
 Dir.glob(File.join(APP_ROOT, 'app', 'models', '*.rb')).each { |file| require file }
 
 # configure TaskManagerApp settings
